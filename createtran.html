@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+           
+        <div>
+             <ul>
+                 <li id="log">PersonalManager</li>
+                 <li><button id ="spbut" onclick="ffbut()">Категорії</button></li>
+                 <li><button  id = "spbut" onclick="ftbut()">Транзакції</button></li>
+                 <li><button id = "spbut" onclick="grafbut()">Графік</button></li>
+                </ul>
+       </div>
+   </header>
+     <div class="con">
+        <h1>Реєстрація транзакції</h1>
+        <div class="block">
+            <form action="/createtran" method="post">
+            <div id="inpt" >
+                 <h4>Назва категорії</h4>
+                <input type="text" list="cat" name="cat">
+                <datalist id="cat"> </datalist>
+               </div>
+               <div id="inpt1">
+                <h4>Тип транзакції</h4>
+               <input type="text" list="type" name="type">
+                <datalist id="type"> 
+                    <option value="Витрата">
+                </datalist>
+        </div>
+           <div id = "inpt2" > <h4>Сума</h4>
+            <input type="text" name="sum"></div>
+
+            <div id = "inpt3"> <h4>Короткий опис</h4>
+                <input type="text" name="opistran"></div>
+
+                <div id = "inpt4"> <h4>Дата</h4>
+                    <input type="date" name="date"></div>
+                  <div>
+                    <button id="but3" type="submit">Зберегти</button>
+                  </div>
+                </form>   
+
+        </div>
+
+
+
+
+
+        <script>
+                 fetch('./data.json')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    for(key in data){
+        var dd = document.getElementById('cat');
+      var gg = data[key];
+      var option = document.createElement('option');
+      option.value = gg['name'];
+       dd.appendChild(option);
+
+    }
+  });
+        </script>
+      <script src="index.js"></script>  
+</body>
+</html>

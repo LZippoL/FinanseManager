@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+       <header>
+           
+            <div>
+                 <ul>
+                     <li id="log">PersonalManager</li>
+                     <li><button id ="spbut" onclick="ffbut()">Категорії</button></li>
+                     <li><button  id = "spbut" onclick="ftbut()">Транзакції</button></li>
+                     <li><button id = "spbut" onclick="grafbut()">Графік</button></li>
+                </ul>
+           </div>
+       </header>
+      <div class="con">
+        <h1>Категорії витрат/доходів</h1>
+           <div class="block"> 
+               <table class="table">
+                  <col  width="5">
+                  <col  width="150">
+                  <col  width="250">
+                  <col  width="180">
+                     <thead>
+                           <th>#</th>
+                           <th>Категорія</th>
+                           <th>Опис</th>
+                           <th>Управління</th>
+                     </thead>
+                     <tbody id="btr">
+                           
+                     </tbody>
+               </table>
+            <div>
+                     <button id="add_but" onclick=" location.href = './transactions.html'">Додати нову категорію</button>
+            </div>
+                <p id="hh"></p>
+            </div>
+
+      </div>
+      <script>
+           fetch('./data.json')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+     
+
+
+
+
+    console.log(data);
+    for(key in data){
+      
+      var gg = data[key];
+      console.log("key:" + gg['name']);
+      console.log(gg);
+      var but1 = document.createElement('button');
+      var but2 = document.createElement('button');
+      but1.textContent = "редагувати";
+      but2.textContent = "видалити";
+      but1.id = "tbbut";
+      but2.id = "tbbut2";
+      var tr = document.createElement('tr');
+    
+      var td = document.createElement('td');
+     td.innerHTML = gg['id'];
+     tr.appendChild(td);
+     document.getElementById('btr').appendChild(tr);
+     
+     var td = document.createElement('td');
+     td.innerHTML = gg['name'];
+     tr.appendChild(td);
+     document.getElementById('btr').appendChild(tr);
+     
+     var td = document.createElement('td');
+     td.innerHTML = gg['opis'];
+     tr.appendChild(td);
+     document.getElementById('btr').appendChild(tr);
+    
+     var td = document.createElement('td');
+     td.appendChild(but1);
+     td.appendChild(but2);
+     tr.appendChild(td);
+     document.getElementById('btr').appendChild(tr);
+     
+     
+}
+     
+    
+  });
+  </script>
+      <script src="node.js"></script>
+    <script src=index.js></script>  
+</body>
+</html>

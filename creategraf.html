@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreateGraf</title>
+</head>
+<body>
+    <header>
+           
+        <div>
+             <ul>
+                 <li id="log">PersonalManager</li>
+                 <li><button id ="spbut" onclick="ffbut()">Категорії</button></li>
+                 <li><button  id = "spbut" onclick="ftbut()">Транзакції</button></li>
+                 <li><button id = "spbut" onclick="grafbut()">Графік</button></li>
+                </ul>
+       </div>
+   </header>
+   <div class="con">
+       <div class="block_graf">
+            <form action="/creategraf.html" method="post">
+                   <div id="inpt7"><h4>Виберіть дату</h4>
+                    <input type="date" name="gr_date"  >
+                    
+                   </div>
+                   <div id="inpt7">
+                    <h4>Виберіть дату</h4>
+                    <input type="date" name="gr_date" >
+                   </div>
+                    <div id="inpt4"><h4>Тип </h4>
+                        <input type="text" list="type" >
+                        <datalist id="type">
+                            <option value="Витрати"></option> </datalist>
+                    </div>
+                    <div id="inpt8"><h4>Категорія</h4>
+                        <input type="text" list="type1" id="inpt">
+                        <datalist id="type1">
+                           </datalist>
+                    </div>
+                    <div>
+                        <button id="but3" type="submit">Згенерувати</button>
+                      </div>
+            </form>
+       
+            <canvas id="graf"></canvas>
+    </div>
+    
+   </div>
+   
+   <script>
+    var gg;
+    var gh;
+    fetch('./data.json')
+.then((response) => {
+return response.json();
+})
+.then((data) => {
+for(key in data){
+var dd = document.getElementById('type1');
+ gg = data[key];
+var option = document.createElement('option');
+option.value = gg['name'];
+dd.appendChild(option);
+
+}
+});
+
+fetch('./tran.json')
+.then((response) => {
+return response.json();
+})
+.then((data) => {
+    var num;
+        var name;
+        var nm;
+        var yh;
+for(key in data){
+
+ gh = data[key];
+console.log(gh['name'])
+ 
+console.log(yh)
+}
+name = [gh['name']];
+ nm = [name];
+console.log(nm)
+num = gh['sum'];
+ 
+ yh = [num];
+const ctx = document.getElementById('graf').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'pie',
+    data: {  labels: nm,
+      
+  
+  datasets: [{
+    label: 'My First Dataset',
+    data: yh,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+    },
+    
+});
+});
+
+
+
+</script>
+
+   <script src="index.js"></script>
+</body>
+</html>

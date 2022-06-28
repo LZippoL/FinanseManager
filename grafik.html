@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafik</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <header>
+           
+        <div>
+             <ul>
+                 <li id="log">PersonalManager</li>
+                 <li><button id ="spbut" onclick="ffbut()">Категорії</button></li>
+                 <li><button  id = "spbut" onclick="ftbut()">Транзакції</button></li>
+                 <li><button id = "spbut" onclick="grafbut()">Графік</button></li>
+                </ul>
+       </div>
+   </header>
+   <div class="con">
+      <div class="block">
+           
+        <canvas id="graf"></canvas>
+      </div>
+      
+   </div>
+   <script>
+    const ctx = document.getElementById('graf').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'pie',
+    data: {  labels: [
+    'Red',
+    'Blue',
+    'Yellow'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+    },
+    
+});
+   </script>
+   <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+           
+        <div>
+             <ul>
+                 <li id="log">PersonalManager</li>
+                 <li><button id ="spbut" onclick="ffbut()">Категорії</button></li>
+                 <li><button  id = "spbut" onclick="ftbut()">Транзакції</button></li>
+                 <li><button id = "spbut" onclick="grafbut()">Графік</button></li>
+                </ul>
+       </div>
+   </header>
+   <div class="con">
+    <h1>Реєстрація/Редагування категорії виплат</h1>
+        <div class="block">
+             
+              <form action="/categories"  method="post" > 
+                <div id="inpt">
+                      <h4>Назва категорії</h4>
+                     <input type="text" name="name" id="inpt"> 
+                </div>
+                <div id="inpt">
+                      <h4>Короткий опис</h4>
+                      <input type="text" name="opis" id="inpt"> <br>
+                </div>
+                 <input type="submit" value="Додати"  id="save_but" >
+            </form> 
+           
+            <button id="ffbut" onclick="ffbut()">Головна</button>
+         </div>
+   </div>  <script src="node.js"></script>
+<script src="index.js"></script>  
+</body>
+</html>
